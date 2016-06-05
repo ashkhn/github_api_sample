@@ -30,10 +30,10 @@ public class HomeActivity extends AppCompatActivity {
                 }else{
                     //Perform search
                     Intent searchUserIntent = new Intent(HomeActivity.this,SearchUserActivity.class);
-                    searchUserIntent.putExtra("search_query",textContent);
+                    searchUserIntent.putExtra(Constants.KEY_SEARCH_QUERY,textContent);
                     Bundle queryBundle = new Bundle();
-                    queryBundle.putString("search_query",textContent);
-                    searchUserIntent.putExtra("query_bundle",queryBundle);
+                    queryBundle.putString(Constants.KEY_SEARCH_QUERY,textContent);
+                    searchUserIntent.putExtra(Constants.KEY_QUERY_BUNDLE,queryBundle);
                     startActivity(searchUserIntent);
 
                 }
