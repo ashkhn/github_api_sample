@@ -1,5 +1,7 @@
 package in.ac.iitb.gymkhana.testapp;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -10,6 +12,7 @@ public class GsonModels {
     public class User{
         private String login;
         private int id;
+        @SerializedName("avatar_url")
         private String avatarUrl;
 
         public User(String login, int id, String avatarUrl) {
@@ -44,7 +47,9 @@ public class GsonModels {
     }
 
     public class SearchResult{
+        @SerializedName("total_count")
         private int totalCount;
+        @SerializedName("incomplete_results")
         private boolean incompleteResults;
         private List<User> items;
 
