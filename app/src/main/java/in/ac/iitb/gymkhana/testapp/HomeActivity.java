@@ -1,5 +1,6 @@
 package in.ac.iitb.gymkhana.testapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,7 +29,13 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this,"Search query is empty",Toast.LENGTH_SHORT).show();
                 }else{
                     //Perform search
-                    Toast.makeText(HomeActivity.this,"Search query is "+ textContent,Toast.LENGTH_SHORT).show();
+                    Intent searchUserIntent = new Intent(HomeActivity.this,SearchUserActivity.class);
+                    searchUserIntent.putExtra("search_query",textContent);
+                    Bundle queryBundle = new Bundle();
+                    queryBundle.putString("search_query",textContent);
+                    searchUserIntent.putExtra("query_bundle",queryBundle);
+                    startActivity(searchUserIntent);
+
                 }
 
             }
