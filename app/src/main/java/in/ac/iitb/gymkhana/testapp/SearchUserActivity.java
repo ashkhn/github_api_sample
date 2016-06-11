@@ -35,11 +35,15 @@ public class SearchUserActivity extends AppCompatActivity implements Callback<Gs
                     "No of responses "+
                     String.valueOf(result.getTotalCount())
                     ,Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(SearchUserActivity.this,"Response Code:" +
+            String.valueOf(response.code()),Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     public void onFailure(Call<GsonModels.SearchResult> call, Throwable t) {
-
+        Toast.makeText(SearchUserActivity.this,
+                "Network error occurred",Toast.LENGTH_LONG).show();
     }
 }

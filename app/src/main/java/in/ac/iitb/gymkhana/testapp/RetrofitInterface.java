@@ -9,7 +9,7 @@ import retrofit2.http.Query;
  */
 
 public interface RetrofitInterface {
-    @GET("/search/user")
+    @GET("/search/users")
     Call<GsonModels.SearchResult> getSearchResults(@Query("q") String searchQuery);
 
 }
