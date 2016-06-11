@@ -14,11 +14,22 @@ public class GsonModels {
         private int id;
         @SerializedName("avatar_url")
         private String avatarUrl;
+        private String url;
+        @SerializedName("html_url")
+        private String htmlUrl;
+        @SerializedName("repos_url")
+        private String reposUrl;
 
-        public User(String login, int id, String avatarUrl) {
+        public User() {
+        }
+
+        public User(String login, int id, String avatarUrl, String url, String htmlUrl, String reposUrl) {
             this.login = login;
             this.id = id;
             this.avatarUrl = avatarUrl;
+            this.url = url;
+            this.htmlUrl = htmlUrl;
+            this.reposUrl = reposUrl;
         }
 
         public String getLogin() {
@@ -44,6 +55,30 @@ public class GsonModels {
         public void setAvatarUrl(String avatarUrl) {
             this.avatarUrl = avatarUrl;
         }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getHtmlUrl() {
+            return htmlUrl;
+        }
+
+        public void setHtmlUrl(String htmlUrl) {
+            this.htmlUrl = htmlUrl;
+        }
+
+        public String getReposUrl() {
+            return reposUrl;
+        }
+
+        public void setReposUrl(String reposUrl) {
+            this.reposUrl = reposUrl;
+        }
     }
 
     public class SearchResult{
@@ -52,6 +87,9 @@ public class GsonModels {
         @SerializedName("incomplete_results")
         private boolean incompleteResults;
         private List<User> items;
+
+        public SearchResult() {
+        }
 
         public SearchResult(int totalCount, boolean incompleteResults, List<User> items) {
             this.totalCount = totalCount;
