@@ -2,6 +2,7 @@ package in.ac.iitb.gymkhana.testapp;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by akash on 11/6/16.
@@ -9,6 +10,6 @@ import retrofit2.http.GET;
 
 public interface RetrofitInterface {
     @GET("/search/user")
-    Call<GsonModels.SearchResult> getSearchResults();
+    Call<GsonModels.SearchResult> getSearchResults(@Query("q") String searchQuery);
 
 }

@@ -3,7 +3,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class SearchUserActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class SearchUserActivity extends AppCompatActivity implements Callback<GsonModels.SearchResult>{
 
     private String searchQuery;
     private String queryFromBundle;
@@ -17,6 +21,25 @@ public class SearchUserActivity extends AppCompatActivity {
             queryBundle = getIntent().getBundleExtra(Constants.KEY_QUERY_BUNDLE);
             queryFromBundle = queryBundle.getString(Constants.KEY_SEARCH_QUERY);
         }
-        Toast.makeText(SearchUserActivity.this,"Search string is " + searchQuery,Toast.LENGTH_SHORT).show();
+        Toast.makeText(SearchUserActivity.this,
+                "Search string is " + searchQuery,Toast.LENGTH_SHORT).show();
+        RetrofitInterface retrofitInterface = ServiceGenerator.createService(RetrofitInterface.class);
+        retrofitInterface.getSearchResults(searchQuery).enqueue(this);
+    }
+
+    @Override
+    public void onResponse(Call<GsonModels.SearchResult> call, Response<GsonModels.SearchResult> response) {
+        if(response.isSuccessful()){
+            GsonModels.SearchResult result = response.body();
+            Toast.makeText(SearchUserActivity.this,
+                    "No of responses "+
+                    String.valueOf(result.getTotalCount())
+                    ,Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onFailure(Call<GsonModels.SearchResult> call, Throwable t) {
+
     }
 }
