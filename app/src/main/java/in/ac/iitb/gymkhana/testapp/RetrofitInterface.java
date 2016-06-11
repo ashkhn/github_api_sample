@@ -1,0 +1,14 @@
+package in.ac.iitb.gymkhana.testapp;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+
+/**
+ * Created by akash on 11/6/16.
+ */
+
+public interface RetrofitInterface {
+    @GET("/search/user")
+    Call<GsonModels.SearchResult> getSearchResults();
+
+}
