@@ -1,5 +1,6 @@
 package in.ac.iitb.gymkhana.testapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,7 +41,7 @@ public class SearchUserActivity extends AppCompatActivity implements Callback<Gs
     @Override
     public void onResponse(Call<GsonModels.SearchResult> call, Response<GsonModels.SearchResult> response) {
         if(response.isSuccessful()){
-            GsonModels.SearchResult result = response.body();
+            final GsonModels.SearchResult result = response.body();
             Toast.makeText(SearchUserActivity.this,
                     "No of responses "+
                     String.valueOf(result.getTotalCount())
@@ -50,7 +51,12 @@ public class SearchUserActivity extends AppCompatActivity implements Callback<Gs
                 @Override
                 public void onItemClick(View v, int position) {
                     Toast.makeText(SearchUserActivity.this,"Item clicked at "+ position, Toast.LENGTH_SHORT).show();
-
+                    GsonModels.User currentUser = result.getItems().get(position);
+                    Intent userDetailsIntent = new Intent(SearchUserActivity.this,
+                            UserDetailActivity.class);
+                    userDetailsIntent.putExtra(Constants.KEY_USER_LOGIN,
+                            currentUser.getLogin());
+                    startActivity(userDetailsIntent);
                 }
             });
             searchResultView.setAdapter(userListAdapter);

@@ -7,4 +7,5 @@ package in.ac.iitb.gymkhana.testapp;
 public class Constants {
     public static final String KEY_SEARCH_QUERY = "search_query";
     public static final String KEY_QUERY_BUNDLE = "query_bundle";
+    public static final String KEY_USER_LOGIN = "user_login";
 }
