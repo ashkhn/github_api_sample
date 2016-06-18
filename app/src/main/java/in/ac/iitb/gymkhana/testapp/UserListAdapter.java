@@ -20,10 +20,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     private List<GsonModels.User> userList;
     private Context context;
+    private ItemClickListener clickListener;
 
-    public UserListAdapter(List<GsonModels.User> userList) {
+    public UserListAdapter(List<GsonModels.User> userList, ItemClickListener listener) {
         this.userList = userList;
-
+        this.clickListener = listener;
     }
 
     @Override
@@ -31,7 +32,14 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View userView = inflater.inflate(R.layout.search_list_item,parent,false);
-        ViewHolder userViewHolder = new ViewHolder(userView);
+
+        final ViewHolder userViewHolder = new ViewHolder(userView);
+        userView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onItemClick(v,userViewHolder.getAdapterPosition());
+            }
+        });
         return userViewHolder;
     }
 
@@ -39,7 +47,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
     public void onBindViewHolder(UserListAdapter.ViewHolder holder, int position) {
         GsonModels.User currentUser = userList.get(position);
         holder.userLogin.setText(currentUser.getLogin());
-        Picasso.with(context).load(currentUser.getAvatarUrl()).into(holder.userProfilePic);
+        Picasso.with(context).load(currentUser.getAvatarUrl())
+                .into(holder.userProfilePic);
     }
 
     @Override

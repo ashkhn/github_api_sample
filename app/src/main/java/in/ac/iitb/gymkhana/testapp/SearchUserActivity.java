@@ -1,8 +1,11 @@
 package in.ac.iitb.gymkhana.testapp;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -42,7 +45,14 @@ public class SearchUserActivity extends AppCompatActivity implements Callback<Gs
                     "No of responses "+
                     String.valueOf(result.getTotalCount())
                     ,Toast.LENGTH_SHORT).show();
-            userListAdapter = new UserListAdapter(result.getItems());
+            Log.i("SearchActivity","Some mwssage");
+            userListAdapter = new UserListAdapter(result.getItems(), new ItemClickListener() {
+                @Override
+                public void onItemClick(View v, int position) {
+                    Toast.makeText(SearchUserActivity.this,"Item clicked at "+ position, Toast.LENGTH_SHORT).show();
+
+                }
+            });
             searchResultView.setAdapter(userListAdapter);
             searchResultView.setLayoutManager(new LinearLayoutManager(this));
 
