@@ -2,6 +2,7 @@ package in.ac.iitb.gymkhana.testapp;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -11,5 +12,9 @@ import retrofit2.http.Query;
 public interface RetrofitInterface {
     @GET("/search/users")
     Call<GsonModels.SearchResult> getSearchResults(@Query("q") String searchQuery);
+
+    @GET("/users/{username}")
+    Call<GsonModels.UserDetails> getUserDetails(@Path("username") String username);
+
 
 }

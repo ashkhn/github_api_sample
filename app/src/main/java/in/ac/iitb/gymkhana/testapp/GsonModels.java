@@ -121,4 +121,108 @@ public class GsonModels {
             this.items = items;
         }
     }
+
+    public class UserDetails{
+
+        private String name;
+        private String company;
+        private String location;
+        private String email;
+        private String bio;
+        private int followers;
+        private int following;
+        @SerializedName("public_repos")
+        private int publicRepos;
+        @SerializedName("public_gists")
+        private int publicGists;
+
+        public UserDetails(String name, String company, String location, String email, String bio, int followers, int following, int publicRepos, int publicGists) {
+            this.name = name;
+            this.company = company;
+            this.location = location;
+            this.email = email;
+            this.bio = bio;
+            this.followers = followers;
+            this.following = following;
+            this.publicRepos = publicRepos;
+            this.publicGists = publicGists;
+        }
+
+        public UserDetails() {
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCompany() {
+            return company;
+        }
+
+        public void setCompany(String company) {
+            this.company = company;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public void setLocation(String location) {
+            this.location = location;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getBio() {
+            return bio;
+        }
+
+        public void setBio(String bio) {
+            this.bio = bio;
+        }
+
+        public int getFollowers() {
+            return followers;
+        }
+
+        public void setFollowers(int followers) {
+            this.followers = followers;
+        }
+
+        public int getFollowing() {
+            return following;
+        }
+
+        public void setFollowing(int following) {
+            this.following = following;
+        }
+
+        public int getPublicRepos() {
+            return publicRepos;
+        }
+
+        public void setPublicRepos(int publicRepos) {
+            this.publicRepos = publicRepos;
+        }
+
+        public int getPublicGists() {
+            return publicGists;
+        }
+
+        public void setPublicGists(int publicGists) {
+            this.publicGists = publicGists;
+        }
+    }
+
+
 }

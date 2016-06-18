@@ -46,7 +46,7 @@ public class SearchUserActivity extends AppCompatActivity implements Callback<Gs
                     "No of responses "+
                     String.valueOf(result.getTotalCount())
                     ,Toast.LENGTH_SHORT).show();
-            Log.i("SearchActivity","Some mwssage");
+            Log.i("SearchActivity","Some message");
             userListAdapter = new UserListAdapter(result.getItems(), new ItemClickListener() {
                 @Override
                 public void onItemClick(View v, int position) {
