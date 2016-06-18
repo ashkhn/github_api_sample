@@ -3,6 +3,7 @@ package in.ac.iitb.gymkhana.testapp;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -15,6 +16,9 @@ public class UserDetailActivity extends AppCompatActivity
     private String userLogin;
 
     private ProgressDialog progressDialog;
+    private TextView userNameTv;
+    private TextView userBioTv;
+    private TextView userFollowersTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,12 @@ public class UserDetailActivity extends AppCompatActivity
         if(getIntent()!=null){
             userLogin = getIntent().getStringExtra(Constants.KEY_USER_LOGIN);
         }
+
+        userNameTv = (TextView) findViewById(R.id.user_name);
+        userBioTv = (TextView) findViewById(R.id.user_bio);
+        userFollowersTv = (TextView) findViewById(R.id.user_followers);
+
+
         progressDialog = new ProgressDialog(UserDetailActivity.this);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(true);
@@ -36,7 +46,9 @@ public class UserDetailActivity extends AppCompatActivity
     public void onResponse(Call<GsonModels.UserDetails> call, Response<GsonModels.UserDetails> response) {
         if(response.isSuccessful()){
             GsonModels.UserDetails userDetails = response.body();
-            //TODO set views
+            userNameTv.setText(userDetails.getName());
+            userBioTv.setText(userDetails.getBio());
+            userFollowersTv.setText(String.valueOf(userDetails.getFollowers()));
         }
         else {
             Toast.makeText(UserDetailActivity.this, "Response code" + response.code(), Toast.LENGTH_SHORT).show();
