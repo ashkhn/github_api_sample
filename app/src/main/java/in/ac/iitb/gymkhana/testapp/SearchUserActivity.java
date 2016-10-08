@@ -56,6 +56,8 @@ public class SearchUserActivity extends AppCompatActivity implements Callback<Gs
                             UserDetailActivity.class);
                     userDetailsIntent.putExtra(Constants.KEY_USER_LOGIN,
                             currentUser.getLogin());
+                    userDetailsIntent.putExtra(Constants.KEY_USER_AVATAR,
+                            currentUser.getAvatarUrl());
                     startActivity(userDetailsIntent);
                 }
             });
