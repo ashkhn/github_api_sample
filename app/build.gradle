@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
     defaultConfig {
         applicationId "in.ac.iitb.gymkhana.testapp"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,7 +20,7 @@ android {
 }
 
 ext {
-    supportLibVersion = '23.4.0'
+    supportLibVersion = '24.2.1'
     retrofitVersion = '2.0.2'
     okhttpVersion = '3.3.1'
 }
