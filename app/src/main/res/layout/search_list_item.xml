@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_marginTop="8dp"
+    app:cardCornerRadius="4dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        >
+        android:layout_margin="16dp">
+
         <ImageView
+            android:id="@+id/user_profile_pic"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/user_profile_pic"
-            tools:src="@mipmap/ic_launcher"
-            android:layout_marginLeft="16dp"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            tools:src="@mipmap/ic_launcher" />
+
         <TextView
+            android:id="@+id/user_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/user_login"
-            android:layout_toRightOf="@id/user_profile_pic"
-            tools:text="Some value"
-            android:textSize="20sp"
-            android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
-            />
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/user_profile_pic"
+            android:textSize="20sp"
+            tools:text="Some value" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>
